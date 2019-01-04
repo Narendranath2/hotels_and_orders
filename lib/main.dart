@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class startPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
