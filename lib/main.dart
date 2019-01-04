@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotels_and_orders/homeScreen.dart';
 
 void main() {
   runApp(new MyApp());
@@ -38,18 +39,24 @@ class startPage extends StatelessWidget {
               Container(
                 height: 80.0,
               ),
-              Card(
-                color: Colors.yellow[600],
-                child: Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-                  child: Text("Start",
-                      style: new TextStyle(
-                          color: Colors.black,
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => homeScreen()));
+                },
+                child: Card(
+                  color: Colors.yellow[600],
+                  child: Container(
+                    padding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+                    child: Text("Start",
+                        style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ));
