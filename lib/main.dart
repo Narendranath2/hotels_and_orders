@@ -27,6 +27,7 @@ class startPage extends StatelessWidget {
               Container(
                 height: 50.0,
               ),
+
               Image.asset('images/plate_icon.png'),
               Container(
                 height: 50.0,
@@ -39,24 +40,24 @@ class startPage extends StatelessWidget {
               Container(
                 height: 80.0,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => homeScreen()));
-                },
-                child: Card(
-                  color: Colors.yellow[600],
-                  child: Container(
-                    padding:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-                    child: Text("Start",
-                        style: new TextStyle(
-                            color: Colors.black,
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.bold)),
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+                child: RaisedButton(
+                    color: Colors.yellow[600],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Start", style: new TextStyle(
+                          color: Colors.black,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold),),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => homeScreen()));
+                    }
                 ),
-              )
+              ),
             ],
           ),
         ));

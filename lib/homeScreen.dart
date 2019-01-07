@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
+import 'package:hotels_and_orders/contentScreen.dart';
 class homeScreen extends StatefulWidget {
   @override
   _homeScreenState createState() => _homeScreenState();
@@ -12,7 +12,7 @@ class _homeScreenState extends State<homeScreen> {
     return Scaffold(
       appBar: new AppBar(
         title: Text("Home"),
-        backgroundColor: Colors.deepPurple[700],
+        backgroundColor: Colors.deepPurple[900],
       ),
       body: Container(
         color: Colors.deepPurple[900],
@@ -27,17 +27,19 @@ class _homeScreenState extends State<homeScreen> {
             foodType("Drinks"),
             foodType("Salads"),
             foodType("Juices"),
-            foodType("Veg Rice Items"),
-            foodType("Non-Veg Rice Items"),
+            foodType("Veg"),
+            foodType("Non-Veg"),
+            foodType("Soft Drinks"),
           ],
           staggeredTiles: [
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
+            StaggeredTile.extent(1, 200.0),
           ],
         ),
       ),
@@ -45,7 +47,7 @@ class _homeScreenState extends State<homeScreen> {
         child: ListView(
           children: <Widget>[
             Image.asset(
-              'images/servingboy.jpg',
+              'images/waiter.png',
             ),
             Divider(
               color: Colors.deepPurple[900],
@@ -108,36 +110,37 @@ class _homeScreenState extends State<homeScreen> {
     );
   }
 
-  Container foodType(String type) {
-    return Container(
-      child: GestureDetector(
-        onTap: () {
-          print("You tapped  $type");
-        },
-        child: Material(
-          borderRadius: BorderRadius.circular(10.0),
-          elevation: 50.0,
-          color: Colors.white,
-          shadowColor: Colors.grey,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+  Widget foodType(String type) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => contentScreen(type)));
+      },
+      child: Container(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Container(
+              color: Colors.white,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                      child: Text(
-                    type,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )),
+                    height: 20,
+                  ),
+                  FittedBox(
+                    fit: BoxFit.contain,
+                    child: new Image.asset('images/plate_icon.png'),
+                  ),
+                  Container(
+                    height: 20,
+                  ),
+                  FittedBox(
+                    fit: BoxFit.cover,
+                    child: Text(type, style: new TextStyle(color: Colors.black,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold),),
+                  )
                 ],
-              ),
-            ),
+              )
           ),
         ),
       ),
